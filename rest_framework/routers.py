@@ -372,7 +372,7 @@ class DefaultRouter(SimpleRouter):
         urls = super(DefaultRouter, self).get_urls()
 
         if self.include_root_view:
-            if self.schema_title:
+            if getattr(self, 'schema_title', None):
                 view = self.get_schema_root_view(api_urls=urls)
             else:
                 view = self.get_api_root_view(api_urls=urls)
